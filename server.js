@@ -5,12 +5,14 @@ const userRoutes = require("./routes/userRoutes");
 const path = require("path");
 const mongoose = require("mongoose");
 const app = express();
-// const cors = require("cors");
+const cors = require("cors");
 dotenv.config();
 mongoose.set("strictQuery", true);
 connectDB();
 app.use(express.json());
+app.use(cors());
 app.get("/", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials","true");
   res.send("API is running..");
 });
 
